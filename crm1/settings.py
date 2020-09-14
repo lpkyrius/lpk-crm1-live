@@ -93,7 +93,7 @@ DATABASES = {
 
 
 '''
-# Banco Postgree local ---------------------------- SOMENTE PARA TESTES LOCAIS
+# Banco Postgree local ---------------------------- SOMENTE PARA TESTES LOCAIS - por enquanto utilizando o SQLITE
 DB_PASSWORD = os.environ.get('PYCRM1_BD_PWD') # senha de app criada para minha conta GMail. Leia mais em https://support.google.com/accounts/answer/185833?hl=en
 
 DATABASES = {
