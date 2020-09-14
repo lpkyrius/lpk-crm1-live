@@ -1,0 +1,389 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Resultado Assessment {% endblock title %}
+
+{% block scripts %}
+
+<script>
+
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+
+</script>
+
+{% endblock scripts %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md">
+        <div class="card text-center text-white bg-dark mb-3">
+            <div class="card-header">
+                <div class="col-md-tit">
+                    <h2>Resultado do Teste</h2>
+
+                    <!-- <a class="btn btn-sm btn-info" href="{% url 'export_pdf' %}">PDF</a> -->
+                    <a class="btn btn-sm btn-info" onClick="window.print()">Imprimir</a>
+                    <!--  <a class="btn btn-sm btn-info" onClick="printDiv('areaimpressao')">Imprimir Função</a>
+                    <input type="button" onclick="printDiv('areaimpressao')" value="Imprimir" />
+                    <input type="button" value="Imprimir" onClick="window.print()" /> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="area-impressao-clss" id="areaimpressao">
+
+    <section class="sessao01">
+        <div>
+            <div class="col-md">
+                <div class="card text-center text-black bg-white mb-3">
+                    <div class="card-header">
+                        <h5>Comparativo Respostas</h5>
+                    </div>
+                </div>
+            </div>
+
+            <figure class="wp-block-table">
+                <div class="col-md">
+                    <table class="table table-sm-activities">
+                        <tr>
+                            <th></th>
+                            <th>Questões</th>
+                            <th>Descrições</th>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>Activities</strong>
+                            </td>
+                            <td>
+                                Todas as informações encontradas nos textos, links e gráficos desta página são apenas para efeito de demonstração.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>Questions</strong>
+                            </td>
+                            <td>Coming up with answers to the following questions can form the second step in an impact assessment:
+                                <br>How can we solve the problem and change the situation?
+                                <br>What relation between cause and effect (impact hypothesis) do we base this on?
+                                <br>What are the preconditions for the objective to be achieved?
+                                <br>Which external forces work against these objectives?
+                                <br>What are the conceivable side effects?
+                                <br>What is the best strategy for reaching the project objective?
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>Results</strong>
+                            </td>
+                            <td>A graphic results models suitable for showing the complexity of a project:
+                                <br>
+                               <a href="">Simple Logic Model</a>
+                                <br>
+                                <a href="">Expanded Logic Model</a>
+                                <br><a href="">Results Framework</a>
+                                <br><a href="">Conceptual Framework</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>Resources</strong>
+                            </td>
+                            <td>
+                                <a href="">Logical Framework Approach</a>: Problem and Objective analysis
+                                <br>
+                                <a href="">Outcome Mapping:</a>&nbsp;Intentional Design
+                                <br>
+                                <a href="">Theory of Change</a>: Backwards Mapping, Identifying interventions
+                                <br>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </figure>
+        </div>
+
+    </section>
+
+<!--     <section class="sessao02">
+
+        <div class="col-md">
+            <div>
+                <br><br>
+            </div>
+            <div class="card text-center text-white bg-dark mb-3">
+                <div class="card-header">
+                    <h5>Gráfico Questão 1</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+
+                <br>
+
+               {{ plot_1 | safe }} 
+
+                <br>
+
+               {% load plotly_dash %}
+                <div class="{% plotly_class name='SimpleExample' %} card" style="height: 100%; width: 100%">
+                    {% plotly_app name='SimpleExample' ratio=0.45 %}
+                </div>
+
+                <canvas id="myChart" width="20" height="10"></canvas> 
+
+            </div>
+        </div>
+
+    </section> -->
+
+    <section class="sessao04">
+
+        <div class="col-md-graf1">
+            <div>
+                <br><br>
+            </div>
+            <div class="card text-center text-black bg-white mb-3">
+                <div class="card-header">
+                    <h5>Gráfico Questão 1</h5>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-sm">
+            <tr>
+                <th></th>
+                <th>Gráfico A</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    {% load plotly_dash %}
+                    <div class="{% plotly_class name='mapdash01' %} card" style="height: 100%; width: 100%">
+                        {% plotly_app name='raddash01' ratio=0.99 %}
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+
+
+            <tr>
+                <th></th>
+                <th>Gráfico B</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    {% load plotly_dash %}
+                    <div class="{% plotly_class name='bardash01' %} card" style="height: 100%; width: 100%">
+                        {% plotly_app name='printdashjs' ratio=0.99 %}
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+
+
+            <tr>
+                <th></th>
+                <th>Dados</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <div class="{% plotly_class name='linedash01' %} card" style="height: 100%; width: 100%">
+                        <table class="table table-sm">
+                            <tr>
+                                <th style="width:1px">Val</th>
+                                <th style="width:1px">Tax</th>
+                            </tr>
+            
+                            <tr>
+                                <td style="width:1px">458</td>
+                                <td style="width:1px">932</td>
+                            </tr>
+                            <tr>
+                                <td style="width:1px">677</td>
+                                <td style="width:1px">856</td>
+                            </tr>
+                            <tr>
+                                <td style="width:1px">234</td>
+                                <td style="width:1px">046</td>
+                            </tr>
+                            <tr>
+                                <td style="width:1px">754</td>
+                                <td style="width:1px">236</td>
+                            </tr>
+                            <tr>
+                                <td style="width:1px">845</td>
+                                <td style="width:1px">396</td>
+                            </tr>
+    
+                        </table>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+
+        </table>
+
+        <table class="table table-sm-graphs02">
+            <tr>
+                <th></th>
+                <th>Valores Finais</th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>            
+                    <div>
+                        {% load plotly_dash %}
+                        <div class="{% plotly_class name='printdashjs' %} card" style="height: 100%; width: 100%">
+                            {% plotly_app name='bardash01' ratio=0.99 %}
+                        </div>
+                    </div>
+                </td>
+                <td></td>
+            </tr>
+            <tr></tr>
+
+        </table>
+
+    </section>
+
+    <section class="sessao03">
+
+        <div>
+            <div class="col-md">
+                <div class="card text-center text-black bg-white mb-3">
+                    <div class="card-header">
+                        <h5>Sugestões Apresentadas</h5>
+                    </div>
+                </div>
+            </div>
+
+            <figure class="wp-block-table">
+                <div class="col-md">
+                    <table class="table table-sm-activities">
+                        <tr>
+                            <th></th>
+                            <th>Novas Questões</th>
+                            <th>Novas Descrições</th>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>New Activities</strong>
+                            </td>
+                            <td>
+                                Todas as informações encontradas nos textos, links e gráficos desta página são apenas para efeito de demonstração.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>New Questions</strong>
+                            </td>
+                            <td>Coming up with answers to the following questions can form the second step in an impact assessment:
+                                <br>How can we solve the problem and change the situation?
+                                <br>What relation between cause and effect (impact hypothesis) do we base this on?
+                                <br>What are the preconditions for the objective to be achieved?
+                                <br>Which external forces work against these objectives?
+                                <br>What are the conceivable side effects?
+                                <br>What is the best strategy for reaching the project objective?
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>New Results</strong>
+                            </td>
+                            <td>A graphic results models suitable for showing the complexity of a project:
+                                <br>
+                               <a href="">Simple Logic Model</a>
+                                <br>
+                                <a href="">Expanded Logic Model</a>
+                                <br><a href="">Results Framework</a>
+                                <br><a href="">Conceptual Framework</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <strong>New Resources</strong>
+                            </td>
+                            <td>
+                                <a href="">Logical Framework Approach</a>: Problem and Objective analysis
+                                <br>
+                                <a href="">Outcome Mapping:</a>&nbsp;Intentional Design
+                                <br>
+                                <a href="">Theory of Change</a>: Backwards Mapping, Identifying interventions
+                                <br>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </figure>
+        </div>
+
+    </section>
+
+    <br>
+
+    <section class="sessao05">
+
+        <div class="col-md">
+            <div class="card text-center text-black bg-white mb-3">
+                <div class="card-header">
+                    <h5>Fechamento - Resultado do Teste</h5>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>
+            <div>
+                <a class="btn btn-sm btn-info" href="{% url 'home' %}">Voltar</a>
+            </div>
+        </th>
+        <td></td>
+    </tr>
+</table>
+
+
+{% endblock content %}
+

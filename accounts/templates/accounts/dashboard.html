@@ -1,0 +1,70 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CLIENTES</h5>
+		<a class="btn btn-sm btn-info" href="{% url 'result_assess_html' %}">Assessment</a>
+
+		<hr>
+		<div class="card card-body">
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a> COMENTEI PORQUE SERÁ CRIADO ATRAVÉS DE REGISTRO JÁ CRIANDO O USER JUNTO E DEPOIS DISPARAR UM E-MAIL ENVIANDO PARA TROCAREM A SENHA -->
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Cliente</th>
+					<th>Telefone</th>
+				</tr>
+
+				{% for customer in customers %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Visualizar</a></td>
+						<td>{{customer.name}}</td>
+						<td>{{customer.phone}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>PEDIDOS</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Produto</th>
+					<th>Data do Pedido</th>
+					<th>Status</th>
+					<th>Editar</th>
+					<th>Deletar</th>
+				</tr>
+
+				{% for order in orders %}
+					<tr>
+						<td>{{order.product}}</td>
+						<td>{{order.date_created}}</td>
+						<td>{{order.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Editar</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Deletar</a></td>
+
+					</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+
